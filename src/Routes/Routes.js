@@ -6,36 +6,37 @@ import FAQ from "../Pages/FAQ/FAQ";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/SignUp";
+import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 
 export const routes = createBrowserRouter([
   {
-    path: '/',
-    element:<Main></Main>,
-    children:[
+    path: "/",
+    element: <Main></Main>,
+    children: [
       {
-        path:'/',
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path:'/courses',
-        element:<Courses></Courses>
+        path: "/courses",
+        element: <Courses></Courses>
       },
       {
-        path:'/faq',
-        element:<FAQ></FAQ>
+        path: "/faq",
+        element: <FAQ></FAQ>,
       },
       {
-        path:'/blog',
-        element:<Blog></Blog>
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
-        path:'/login',
-        element:<Login></Login>
+        path: "/login",
+        element: <Login></Login>,
       },
       {
-        path:'/signup',
-        element:<SignUp></SignUp>
-      }
-    ]
-  }
-]) 
+        path: "/signup",
+        element: <SignUp></SignUp>,
+      },
+    ],
+  },
+]); 

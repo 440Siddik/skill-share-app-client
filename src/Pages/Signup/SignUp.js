@@ -19,7 +19,7 @@ const SignUp = () => {
         .then(result => {
           const user = result.user;
           form.reset();
-          
+          setError("");
           console.log(user);
         })
         .catch(error => {
