@@ -2,11 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
+  const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const fullname = form.fullname.value
+        const photoURL = form.photourl.value
+        console.log(email, password, fullname, photoURL);
+  }
   return (
     <div>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100 mx-auto my-4">
         <h1 className="text-2xl font-bold text-center">Signup With Email</h1>
-        <form className="space-y-6 ng-untouched ng-pristine ng-valid">
+        <form onSubmit={handleSubmit} className="space-y-6 ng-untouched ng-pristine ng-valid">
           <div className="space-y-1 text-sm">
             <label className="block dark:text-gray-400">Full name</label>
             <input
