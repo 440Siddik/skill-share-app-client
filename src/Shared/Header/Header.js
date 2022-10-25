@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./logo.webp";
-import { FaLightbulb } from "react-icons/fa";
+import { FaLightbulb, FaUser } from "react-icons/fa";
 import { BsFillLightbulbOffFill } from "react-icons/bs";
+import { AuthContext } from "../../Contexts/AuthProvider";
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
   const [toggle, setToggle] = useState(false);
+    const handleLogOut = () => {
+      logOut()
+      .then(()=> {})
+      .catch(error => console.error(error))
+    };
   return (
     <div>
       <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
@@ -40,21 +47,21 @@ const Header = () => {
                 Blog
               </Link>
             </li>
-            <li className="flex">
-              <Link
-                to="/login"
-                className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
-              >
-                Login
-              </Link>
-            </li>
-            <li className="flex">
-              <Link
-                to="/signup"
-                className="flex items-center px-4 -mb-1 border-b-2 dark:border-transparent"
-              >
-                SignUp
-              </Link>
+            <li className="flex items-center">
+              {user?.photoURL ? (
+                <>
+                  <img
+                    className={`rounded-full h-10 hover:${user?.displayName}`}
+                    src={user?.photoURL}
+                    alt="profile image"
+                  />
+                  <button onClick={handleLogOut} className="ml-2 bg-zinc-200 py-2 px-2 font-medium rounded text-black">
+                    Log Out
+                  </button>
+                </>
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
             </li>
             <li className="flex items-center">
               {toggle ? (

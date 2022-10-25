@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Login = () => {
-  const { googleProviderLogin } = useContext(AuthContext);
+  const { googleProviderLogin, logOut } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider()
   const handleGoogleSignIn = () => {
     googleProviderLogin(googleProvider)
@@ -14,6 +14,7 @@ const Login = () => {
     })
     .catch(error => console.error(error))
   };
+
   return (
     <div>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100 mx-auto my-4">
