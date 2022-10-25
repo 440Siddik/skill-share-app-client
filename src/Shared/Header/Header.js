@@ -7,11 +7,11 @@ import { AuthContext } from "../../Contexts/AuthProvider";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [toggle, setToggle] = useState(false);
-    const handleLogOut = () => {
-      logOut()
-      .then(()=> {})
-      .catch(error => console.error(error))
-    };
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   return (
     <div>
       <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
@@ -48,14 +48,17 @@ const Header = () => {
               </Link>
             </li>
             <li className="flex items-center">
-              {user?.photoURL ? (
+              {user?.uid ? (
                 <>
                   <img
-                    className={`rounded-full h-10 hover:${user?.displayName}`}
+                    className="rounded-full h-10"
                     src={user?.photoURL}
                     alt="profile image"
                   />
-                  <button onClick={handleLogOut} className="ml-2 bg-zinc-200 py-2 px-2 font-medium rounded text-black">
+                  <button
+                    onClick={handleLogOut}
+                    className="ml-2 bg-zinc-200 py-2 px-2 font-medium rounded text-black"
+                  >
                     Log Out
                   </button>
                 </>

@@ -1,10 +1,12 @@
 import { GoogleAuthProvider } from "firebase/auth";
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Login = () => {
-  const { googleProviderLogin, logOut } = useContext(AuthContext);
+  const { googleProviderLogin, signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+  const [error, setError] = useState('')
   const googleProvider = new GoogleAuthProvider()
   const handleGoogleSignIn = () => {
     googleProviderLogin(googleProvider)
@@ -20,13 +22,27 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
+    signIn(email, password)
+    .then(result => {
+      const user = result.user;
+      form.reset()
+      navigate("/");
+      console.log(user);
+    })
+    .catch(error => {
+      setError(error.message)
+    })
   }
 
   return (
     <div>
       <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100 mx-auto my-4">
         <h1 className="text-2xl font-bold text-center">Login With Email</h1>
-        <form onSubmit={handleSubmit} className="space-y-6 ng-untouched ng-pristine ng-valid">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6 ng-untouched ng-pristine ng-valid"
+        >
           <div className="space-y-1 text-sm">
             <label className="block dark:text-gray-400">Username</label>
             <input
@@ -83,6 +99,10 @@ const Login = () => {
             </svg>
           </button>
         </div>
+        <p className="text-center">
+          {" "}
+          <small className="text-red-600 font-semibold mt-2">{error}</small>
+        </p>
         <p className="text-xs text-center sm:px-6 dark:text-gray-400">
           Don't have an account?
           <Link to="/signup" className="underline dark:text-gray-100">
