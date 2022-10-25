@@ -19,6 +19,9 @@ const createUser = (email, password) => {
 const signIn = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
 }
+const gitHubProvider = (gitProvider) =>{
+  return signInWithPopup(auth, gitProvider);
+}
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
       console.log('User state changed', currentUser);
@@ -29,7 +32,14 @@ const signIn = (email, password) => {
     }
   },[])
 
-  const authinfo = { user, googleProviderLogin, logOut, createUser, signIn }; 
+  const authinfo = {
+    user,
+    googleProviderLogin,
+    logOut,
+    createUser,
+    signIn,
+    gitHubProvider,
+  }; 
   return (
     <AuthContext.Provider value={authinfo}>
       {children}
