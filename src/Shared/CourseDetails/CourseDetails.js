@@ -22,7 +22,7 @@ const CourseDetails = ({ category }) => {
             )}
           </div>
           <p>Rating : {rating}</p>
-          <Link to={`/category/${id}`}>
+          <Link to={`/courses/${id}`}>
             <button
               type="button"
               className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-400 dark:text-gray-900"
