@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "./logo.webp";
-import { FaLightbulb, FaUser } from "react-icons/fa";
+import { FaLightbulb } from "react-icons/fa";
 import { BsFillLightbulbOffFill } from "react-icons/bs";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import ReactTooltip from "react-tooltip";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [toggle, setToggle] = useState(false);
@@ -54,6 +55,7 @@ const Header = () => {
                     className="rounded-full h-10"
                     src={user?.photoURL}
                     alt="profile image"
+                    data-tip={user?.displayName}
                   />
                   <button
                     onClick={handleLogOut}
@@ -82,6 +84,7 @@ const Header = () => {
           </ul>
         </div>
       </header>
+        <ReactTooltip />
     </div>
   );
 };
