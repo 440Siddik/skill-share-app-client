@@ -44,13 +44,13 @@ export const routes = createBrowserRouter([
       {
         path: "/courses/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(`https://skill-share-app-server.vercel.app/category/${params.id}`),
         element: <CategoryDetails></CategoryDetails>,
       },
       {
         path: "/checkout/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(`https://skill-share-app-server.vercel.app/category/${params.id}`),
         element: (
           <PrivateRoutes>
             <CheckOut></CheckOut>
