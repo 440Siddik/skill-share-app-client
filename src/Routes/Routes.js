@@ -4,6 +4,7 @@ import Blog from "../Pages/Blog/Blog";
 import CategoryDetails from "../Pages/CategoryDetails/CategoryDetails";
 import CheckOut from "../Pages/checkout/CheckOut";
 import Courses from "../Pages/Courses/Courses";
+import ErrorElements from "../Pages/ErrorElements/ErrorElements";
 import FAQ from "../Pages/FAQ/FAQ";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -14,6 +15,7 @@ export const routes = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorElements></ErrorElements>,
     children: [
       {
         path: "/",

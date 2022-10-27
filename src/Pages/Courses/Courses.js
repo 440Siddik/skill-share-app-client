@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import CourseDetails from "../../Shared/CourseDetails/CourseDetails";
+import CourseDetails from "../CourseDetails/CourseDetails";
 
 const Courses = () => {
  const [categories, setCategories] = useState([])
